@@ -293,7 +293,7 @@ export default function App() {
               CloudReady — AZ-900 Exam Preparation
             </div>
             <p className="text-[11px] text-slate-400 max-w-xl">
-              Independent community project for the Vibe Coding Hackathon: AZ-900 Edition (#1MillionDevs). Not affiliated with or endorsed by Microsoft.
+              Independent educational community project. Not affiliated with or endorsed by Microsoft.
             </p>
           </div>
 

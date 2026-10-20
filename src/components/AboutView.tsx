@@ -191,9 +191,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onStartLearning, onStartQu
           {/* Title & Hackathon Banner */}
           <section className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-sky-600">
-              <span>Vibe Coding Hackathon: AZ-900 Exam Prep Edition</span>
-              <span aria-hidden="true">·</span>
-              <span>#1MillionDevs Movement</span>
+              <span>Interactive Cloud Study Companion</span>
             </div>
 
             <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
@@ -205,7 +203,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onStartLearning, onStartQu
             </blockquote>
 
             <p className="text-sm text-slate-600 leading-relaxed">
-              CloudReady is an interactive study and exam-preparation web application created during the Vibe Coding Hackathon: AZ-900 Exam Prep Edition, supporting the global #1MillionDevs movement. It was created out of a simple observation: preparing for cloud certification exams is too often bogged down by dense jargon, confusing walls of text, and rote memorization with no practical analogies.
+              CloudReady is an interactive study and exam-preparation web application. It was created out of a simple observation: preparing for cloud certification exams is too often bogged down by dense jargon, confusing walls of text, and rote memorization with no practical analogies.
             </p>
           </section>
 
@@ -264,7 +262,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onStartLearning, onStartQu
             A Free, Reusable Resource for All
           </h3>
           <p className="text-xs text-slate-600 leading-relaxed">
-            By distilling one learner&apos;s real exam preparation notes and hurdles into an open, community-friendly tool, CloudReady accelerates the path to cloud literacy for thousands of aspiring engineers participating in the #1MillionDevs initiative.
+            By distilling real exam preparation notes and hurdles into an open, community-friendly tool, CloudReady accelerates the path to cloud literacy for thousands of aspiring engineers and builders.
           </p>
         </div>
       </section>

@@ -82,12 +82,6 @@ export const Dashboard: React.FC<DashboardProps> = ({
       {/* Hero Banner with Clean Navy & Azure Visual Identity */}
       <section className="bg-slate-900 text-white rounded-2xl p-6 sm:p-8 lg:p-10 border border-slate-800 shadow-sm relative overflow-hidden">
         <div className="relative z-10 max-w-3xl">
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-sky-400 mb-3">
-            <span>AZ-900 Exam Preparation</span>
-            <span aria-hidden="true">·</span>
-            <span>#1MillionDevs Edition</span>
-          </div>
-
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-3">
             Cloud<span className="text-sky-400">Ready</span>
           </h1>

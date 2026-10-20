@@ -140,7 +140,7 @@ export const QuizResults: React.FC<QuizResultsProps> = ({
               </div>
 
               <div className="text-xs font-bold uppercase tracking-widest text-sky-700">
-                #1MillionDevs Movement · CloudReady
+                CloudReady Certification Verification
               </div>
 
               <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900">
