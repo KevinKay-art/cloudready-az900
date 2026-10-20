@@ -52,7 +52,7 @@ export const AboutView: React.FC<AboutViewProps> = ({ onStartLearning, onStartQu
     {
       step: 'Slide 3 / 5',
       badge: '15% Judging Weight · Target Users',
-      title: 'Target Audience: Empowering the Next 1 Million Developers',
+      title: 'Target Audience: Empowering Learners and New Developers',
       tagline: 'Tailored for beginners, self-taught developers, and career changers across Africa and globally.',
       bullets: [
         'Beginners & University Students: Demystifies cloud fundamentals before starting complex cloud architectures.',
