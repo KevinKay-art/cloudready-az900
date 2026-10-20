@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Sparkles,
   BookOpen,
@@ -10,6 +10,9 @@ import {
   Heart,
   HelpCircle,
   ExternalLink,
+  Copy,
+  Check,
+  Presentation,
 } from 'lucide-react';
 
 interface AboutViewProps {
@@ -18,8 +21,9 @@ interface AboutViewProps {
 }
 
 export const AboutView: React.FC<AboutViewProps> = ({ onStartLearning, onStartQuiz }) => {
-  const [activeSubTab, setActiveSubTab] = React.useState<'overview' | 'pitch'>('overview');
-  const [activeSlide, setActiveSlide] = React.useState<number>(0);
+  const [activeSubTab, setActiveSubTab] = useState<'overview' | 'pitch'>('overview');
+  const [activeSlide, setActiveSlide] = useState<number>(0);
+  const [copiedStatus, setCopiedStatus] = useState<string | null>(null);
 
   const PITCH_SLIDES = [
     {
@@ -90,35 +94,141 @@ export const AboutView: React.FC<AboutViewProps> = ({ onStartLearning, onStartQu
     },
   ];
 
+  const copyToClipboard = (text: string, label: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedStatus(label);
+    setTimeout(() => setCopiedStatus(null), 3000);
+  };
+
+  const getAllSlidesCanvaText = () => {
+    return PITCH_SLIDES.map((slide, i) => {
+      return `SLIDE ${i + 1}: ${slide.title} (${slide.badge})
+Tagline: ${slide.tagline}
+
+Key Points:
+${slide.bullets.map((b) => `• ${b}`).join('\n')}
+
+Learner Quote / Highlight:
+"${slide.learnerQuote}"
+--------------------------------------------------`;
+    }).join('\n\n') + `\n\nPROJECT LINKS FOR FINAL SLIDE:
+• GitHub Repository: https://github.com/KevinKay-art/cloudready-az900
+• Live Working App: https://ais-pre-ye4dd7vwjri62fa7xkjozg-479005775401.europe-west2.run.app`;
+  };
+
+  const getCurrentSlideCanvaText = () => {
+    const slide = PITCH_SLIDES[activeSlide];
+    return `${slide.step}: ${slide.title}
+Weight / Criteria: ${slide.badge}
+Tagline: ${slide.tagline}
+
+Key Points:
+${slide.bullets.map((b) => `• ${b}`).join('\n')}
+
+Highlight:
+"${slide.learnerQuote}"`;
+  };
+
   return (
     <div className="max-w-4xl mx-auto space-y-8">
       {/* Sub-navigation tabs: Overview vs Pitch Deck */}
-      <div className="flex items-center gap-2 p-1 bg-slate-200/80 rounded-xl w-fit">
-        <button
-          onClick={() => setActiveSubTab('overview')}
-          className={`px-4 py-2 text-xs font-bold rounded-lg transition-all cursor-pointer ${
-            activeSubTab === 'overview'
-              ? 'bg-white text-slate-900 shadow-sm'
-              : 'text-slate-600 hover:text-slate-900'
-          }`}
-        >
-          Project Overview & Non-Affiliation
-        </button>
-        <button
-          onClick={() => setActiveSubTab('pitch')}
-          className={`px-4 py-2 text-xs font-bold rounded-lg transition-all cursor-pointer flex items-center gap-1.5 ${
-            activeSubTab === 'pitch'
-              ? 'bg-sky-600 text-white shadow-sm'
-              : 'text-slate-600 hover:text-slate-900'
-          }`}
-        >
-          <span>🎤 Hackathon Pitch Deck (Judges Guide)</span>
-        </button>
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex items-center gap-2 p-1 bg-slate-200/80 rounded-xl w-fit">
+          <button
+            onClick={() => setActiveSubTab('overview')}
+            className={`px-4 py-2 text-xs font-bold rounded-lg transition-all cursor-pointer ${
+              activeSubTab === 'overview'
+                ? 'bg-white text-slate-900 shadow-sm'
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
+          >
+            Project Overview & Non-Affiliation
+          </button>
+          <button
+            onClick={() => setActiveSubTab('pitch')}
+            className={`px-4 py-2 text-xs font-bold rounded-lg transition-all cursor-pointer flex items-center gap-1.5 ${
+              activeSubTab === 'pitch'
+                ? 'bg-sky-600 text-white shadow-sm'
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
+          >
+            <Presentation className="w-3.5 h-3.5" />
+            <span>🎤 Hackathon Pitch Deck & Canva Slides</span>
+          </button>
+        </div>
+
+        {activeSubTab === 'pitch' && (
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => copyToClipboard(getCurrentSlideCanvaText(), 'slide')}
+              className="px-3 py-1.5 text-xs font-bold bg-white hover:bg-slate-50 border border-slate-300 text-slate-700 rounded-lg flex items-center gap-1.5 transition-colors cursor-pointer shadow-sm"
+              title="Copy current slide text to paste into Canva"
+            >
+              {copiedStatus === 'slide' ? (
+                <>
+                  <Check className="w-3.5 h-3.5 text-emerald-600" />
+                  <span className="text-emerald-700">Slide Copied!</span>
+                </>
+              ) : (
+                <>
+                  <Copy className="w-3.5 h-3.5 text-slate-500" />
+                  <span>Copy This Slide</span>
+                </>
+              )}
+            </button>
+            <button
+              onClick={() => copyToClipboard(getAllSlidesCanvaText(), 'all')}
+              className="px-3 py-1.5 text-xs font-bold bg-sky-600 hover:bg-sky-500 text-white rounded-lg flex items-center gap-1.5 transition-colors cursor-pointer shadow-sm"
+              title="Copy all 5 pitch slides formatted for Canva"
+            >
+              {copiedStatus === 'all' ? (
+                <>
+                  <Check className="w-3.5 h-3.5" />
+                  <span>All 5 Slides Copied!</span>
+                </>
+              ) : (
+                <>
+                  <Copy className="w-3.5 h-3.5" />
+                  <span>Copy All 5 Slides for Canva</span>
+                </>
+              )}
+            </button>
+            <a
+              href="https://www.canva.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1.5 text-xs font-bold bg-violet-600 hover:bg-violet-500 text-white rounded-lg flex items-center gap-1.5 transition-colors cursor-pointer shadow-sm"
+            >
+              <span>Open Canva ↗</span>
+            </a>
+          </div>
+        )}
       </div>
 
       {activeSubTab === 'pitch' ? (
         /* Interactive Hackathon Pitch Deck */
         <div className="space-y-6">
+          {/* Canva Presentation Quick Instructions */}
+          <div className="bg-gradient-to-r from-violet-50 to-indigo-50 border border-violet-200 rounded-xl p-4 text-xs text-violet-900 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs">
+            <div>
+              <span className="font-bold text-violet-950 flex items-center gap-1.5">
+                <Presentation className="w-4 h-4 text-violet-600" />
+                Ready to make your Canva Pitch Deck?
+              </span>
+              <p className="text-violet-700 mt-0.5">
+                Each slide below directly maps to the official Hackathon Pitch Criteria (100% total weight). Click <strong>&quot;Copy All 5 Slides for Canva&quot;</strong> or copy slide-by-slide to paste into any clean presentation template!
+              </p>
+            </div>
+            <a
+              href="https://www.canva.com/templates/?query=tech+pitch+deck"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0 px-3 py-1.5 bg-violet-700 hover:bg-violet-800 text-white font-bold rounded-lg text-center"
+            >
+              Browse Canva Templates ↗
+            </a>
+          </div>
+
           <div className="bg-slate-900 text-white rounded-2xl p-6 sm:p-8 border border-slate-800 shadow-md">
             <div className="flex flex-wrap items-center justify-between gap-2 text-xs mb-3">
               <span className="font-mono text-sky-400 font-bold uppercase tracking-wider">
