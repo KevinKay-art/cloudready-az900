@@ -1,0 +1,6 @@
+{
+  "name": "CloudReady — AZ-900 Exam Prep",
+  "description": "Interactive study companion and original practice quiz engine for Microsoft Azure Fundamentals (AZ-900) certification prep.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
