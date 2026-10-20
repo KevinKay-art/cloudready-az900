@@ -4,6 +4,8 @@
 > An educational, community-focused cloud prep companion built for the **Vibe Coding Hackathon**.
 
 🌐 **Live Working Demo**: [CloudReady App on AI Studio](https://ais-pre-ye4dd7vwjri62fa7xkjozg-479005775401.europe-west2.run.app)  
+📊 **Presentation Deck (Canva)**: [View Canva Pitch Deck](https://canva.link/j2g6282zhp7pgez)  
+💻 **GitHub Repository**: [KevinKay-art/cloudready-az900](https://github.com/KevinKay-art/cloudready-az900)  
 🎓 **Exam Target**: Microsoft Certified: Azure Fundamentals (AZ-900)  
 🛡️ **Status**: Independent & Unofficial Community Resource
 
