@@ -3,6 +3,10 @@
 > **"Building Smarter Exam Prep Tools from Our Own Learning Journey."**  
 > An educational, community-focused project built for the **Vibe Coding Hackathon: AZ-900 Exam Prep Edition**, supporting the global **#1MillionDevs** movement.
 
+🌐 **Live Working Demo**: [CloudReady App on AI Studio](https://ais-pre-ye4dd7vwjri62fa7xkjozg-479005775401.europe-west2.run.app)  
+🎓 **Exam Target**: Microsoft Certified: Azure Fundamentals (AZ-900)  
+🛡️ **Status**: Independent & Unofficial Community Resource
+
 ---
 
 ## 🎯 Overview
